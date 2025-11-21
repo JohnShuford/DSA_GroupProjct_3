@@ -1,0 +1,33 @@
+Node_From,Node_To,Location_From,Location_To,Travel_Time_Minutes
+A,B,Warsaw Chopin Airport,Sluzewiec Horse Racetrack,9
+A,C,Warsaw Chopin Airport,Szczesliwicki Park,10
+B,A,Sluzewiec Horse Racetrack,Warsaw Chopin Airport,9
+B,C,Sluzewiec Horse Racetrack,Szczesliwicki Park,14
+B,D,Sluzewiec Horse Racetrack,SGH Warsaw School of Economics,11
+C,A,Szczesliwicki Park,Warsaw Chopin Airport,10
+C,B,Szczesliwicki Park,Sluzewiec Horse Racetrack,14
+C,D,Szczesliwicki Park,SGH Warsaw School of Economics,12
+C,E,Szczesliwicki Park,Warsaw West Train Station,10
+D,B,SGH Warsaw School of Economics,Sluzewiec Horse Racetrack,11
+D,C,SGH Warsaw School of Economics,Szczesliwicki Park,12
+D,F,SGH Warsaw School of Economics,Legia Warsaw Stadium,8
+D,H,SGH Warsaw School of Economics,Palace of Culture and Science,8
+E,C,Warsaw West Train Station,Szczesliwicki Park,10
+E,H,Warsaw West Train Station,Palace of Culture and Science,12
+E,I,Warsaw West Train Station,National Museum in Warsaw,12
+F,D,Legia Warsaw Stadium,SGH Warsaw School of Economics,8
+F,G,Legia Warsaw Stadium,Warsaw University Library,6
+F,J,Legia Warsaw Stadium,PGE Narodowy Stadium,4
+G,F,Warsaw University Library,Legia Warsaw Stadium,6
+G,I,Warsaw University Library,National Museum in Warsaw,6
+G,J,Warsaw University Library,PGE Narodowy Stadium,6
+H,D,Palace of Culture and Science,SGH Warsaw School of Economics,8
+H,E,Palace of Culture and Science,Warsaw West Train Station,12
+H,I,Palace of Culture and Science,National Museum in Warsaw,3
+I,E,National Museum in Warsaw,Warsaw West Train Station,12
+I,G,National Museum in Warsaw,Warsaw University Library,6
+I,H,National Museum in Warsaw,Palace of Culture and Science,3
+I,J,National Museum in Warsaw,PGE Narodowy Stadium,5
+J,F,PGE Narodowy Stadium,Legia Warsaw Stadium,4
+J,G,PGE Narodowy Stadium,Warsaw University Library,6
+J,I,PGE Narodowy Stadium,National Museum in Warsaw,5

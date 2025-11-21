@@ -1,0 +1,11 @@
+Node,Location,Latitude,Longitude,Connections
+A,Warsaw Chopin Airport,52.1672,20.9670,"B, C"
+B,Sluzewiec Horse Racetrack,52.1782,20.9952,"A, C, D"
+C,Szczesliwicki Park,52.2077,20.9731,"A, B, D, E"
+D,SGH Warsaw School of Economics,52.2103,21.0127,"B, C, F, H"
+E,Warsaw West Train Station,52.2201,20.9629,"C, H, I"
+F,Legia Warsaw Stadium,52.2222,21.0398,"D, G, J"
+G,Warsaw University Library,52.2417,21.0346,"F, I, J"
+H,Palace of Culture and Science,52.2319,21.0051,"D, E, I"
+I,National Museum in Warsaw,52.2317,21.0271,"E, G, H, J"
+J,PGE Narodowy Stadium,52.2394,21.0457,"F, G, I"
