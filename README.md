@@ -18,7 +18,6 @@ We selected 10 locations (labeled A through J) across Warsaw that serve as nodes
 - H: Palace of Culture and Science
 - I: National Museum in Warsaw
 
-These locations were chosen because they represent key landmarks and infrastructure points that would naturally appear on a route across the city.
 
 ### Map Construction
 
