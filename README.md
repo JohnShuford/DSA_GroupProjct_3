@@ -4,7 +4,7 @@
 
 ### City Selection
 
-We chose Warsaw, Poland as our test city for several reasons. First, Warsaw has a well-developed road network with clear landmarks that make it easy to validate our results. Second, the city offers a good mix of infrastructure types—airports, sports stadiums, universities, parks, and cultural sites—which let us build a realistic graph that represents actual urban navigation patterns. 
+We chose Warsaw, Poland as our test city for several reasons. First, Warsaw has a well-developed road network with clear landmarks that make it easy to validate our results. Second, the city offers a good mix of infrastructure types (airports, sports stadiums, universities, parks, and cultural sites) which let us build a realistic graph that represents actual urban navigation patterns. 
 
 ### Node Definition
 
