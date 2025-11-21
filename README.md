@@ -25,7 +25,7 @@ Each location was mapped using real GPS coordinates obtained from Google Maps. E
 
 ### Base Case Scenario Design
 
-For the base case, we assumed no  traffic conditions. All travel times came directly from Google Maps. As we mapped then, there was 3 am in Poland, which suggests no traffic on the streets. The graph structure treats all edges as bidirectional with equal travel times in both directions. 
+For the base case, we assumed no  traffic conditions. All travel times came directly from Google Maps. As we mapped then, there was 3 am in Poland, which suggests no traffic on the streets.
 
 ---
 
