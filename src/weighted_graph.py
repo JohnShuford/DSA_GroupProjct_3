@@ -45,15 +45,17 @@ class WeightedGraph(object):
                 else math.inf)
     
     def t_edgeWeight(self, low_fact = 1, high_fact = 3):
-        tw = {}
+        self.tw = {}
         for (_from, _to), base_w in self._adjMat.items():
-            while (_from,_to) not in tw:
+            while (_from,_to) not in self.tw:
                 self.validIndex(_from)
                 self.validIndex(_to)
+                
                 t_inflate = round(random.uniform(low_fact, high_fact),2)
-                tw = base_w * t_inflate
-                tw[(_from, _to)] = tw
-                tw[(_to, _from)] = tw
+                new_time = base_w * t_inflate
+                
+                self.tw[(_from, _to)] = new_time
+                self.tw[(_to, _from)] = new_time
         return self.tw
     
     def adjacentVertices(self, n):
