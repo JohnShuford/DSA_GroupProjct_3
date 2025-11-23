@@ -1,7 +1,7 @@
 import heapq
 import math
+import random
 from vertex import Vertex
-
 
 class WeightedGraph(object):
     def __init__(self):
@@ -43,19 +43,31 @@ class WeightedGraph(object):
         self.validIndex(B)
         return (self._adjMat[A, B] if (A, B) in self._adjMat
                 else math.inf)
-
+    
+    def t_edgeWeight(self, low_fact = 1, high_fact = 3):
+        tw = {}
+        for (_from, _to), base_w in self._adjMat.items():
+            while (_from,_to) not in tw:
+                self.validIndex(_from)
+                self.validIndex(_to)
+                t_inflate = round(random.uniform(low_fact, high_fact),2)
+                tw = base_w * t_inflate
+                tw[(_from, _to)] = tw
+                tw[(_to, _from)] = tw
+        return self.tw
+    
     def adjacentVertices(self, n):
         self.validIndex(n)
         for j in range(self.nVertices()):
             if j != n and self.hasEdge(n, j):
                 yield j
 
-    def shortestPath(self, start, end):
+    def shortestPath(self, start, end, traffic = False):
         dist = {u: float('inf') for u in range(self.nVertices())}
         parent = {u: None for u in range(self.nVertices())}
         dist[start] = 0
         pq = [(0, start)]
-        
+
         while pq:
             d, u = heapq.heappop(pq)
             if d != dist[u]:
@@ -63,7 +75,10 @@ class WeightedGraph(object):
             if u == end:
                 break
             for v in self.adjacentVertices(u):
-                w = self.edgeWeight(u, v)
+                if traffic:
+                    w = self.tw[(u, v)]
+                else:
+                    w = self.edgeWeight(u, v)
                 nd = d + w
                 if nd < dist[v]:
                     dist[v] = nd
@@ -82,11 +97,30 @@ class WeightedGraph(object):
         
         return path
     
+    def pathEdgetimes(self, path, traffic = False):
+        base = []
+        traf = []
+        for i, v in enumerate(path):
+            if i < (len(path) - 1):
+                if traffic:
+                    t = self.tw[(v,path[i+1])]
+                    traf.append(t)
+                else:
+                    b = self.edgeWeight(v, path[i+1])
+                    base.append(b)
+        if traffic:
+            return traf
+        else:
+            return base 
+                
     def letters_instead_of_indexes(self, path):
         return [self.getVertex(i).name for i in path]
     
-    def total_time (self, path):
+    def total_time (self, path, traffic = False):
         total = 0
         for i in range(len(path) - 1):
-            total += self.edgeWeight(path[i], path[i+1])
+            if traffic == False:
+                total += self.edgeWeight(path[i], path[i+1])
+            else:
+                total += self.tw[(path[i], path[i+1])]
         return total

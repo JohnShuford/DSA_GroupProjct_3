@@ -32,10 +32,10 @@ class WarsawNavigator:
             time = row['Travel_Time_Minutes']
             self.graph.addEdge(from_idx, to_idx, time)
 
-    def find_route(self, start_letter, end_letter):
+    def find_route(self, start_letter, end_letter, traffic = False):
         start_idx = self.letter_to_index[start_letter]
         end_idx = self.letter_to_index[end_letter]
-        return self.graph.shortestPath(start_idx, end_idx)
+        return self.graph.shortestPath(start_idx, end_idx, traffic)
 
     def create_map(self):
         warsaw_center = [52.2297, 21.0122]
@@ -106,21 +106,28 @@ class WarsawNavigator:
         
         return m
 
-    def print_route_details(self, start_letter, end_letter):
-        path = self.find_route(start_letter, end_letter)
+    def print_route_details(self, start_letter, end_letter, traffic = False):
+        path = self.find_route(start_letter, end_letter, traffic)
         letters = self.graph.letters_instead_of_indexes(path)
-        total_time = self.graph.total_time(path)
+        total_time = self.graph.total_time(path, traffic)
+        edge_time = self.graph.pathEdgetimes(path, traffic)
         
         print(f"\n{'='*60}")
-        print(f"Route from {start_letter} to {end_letter}")
+        if traffic == True:
+            print(f"Route from {start_letter} to {end_letter} with traffic")
+        else: 
+            print(f"Route from {start_letter} to {end_letter}; no traffic")
         print(f"{'='*60}")
         
         print("\nPath (Letters):")
         print(" → ".join(letters))
         
         print("\nPath (Locations):")
-        for letter in letters:
-            print(f"  {letter}: {self.node_data[letter]['name']}")
+
+        first = letters[0]
+        print(f" {first}: {self.node_data[first]['name']} (start)")
+        for letter, v in zip(letters[1:], edge_time):
+            print(f" {letter}: {self.node_data[letter]['name']} ({round(v, 1)} mins)")
         
-        print(f"\nTotal Travel Time: {total_time} minutes")
+        print(f"\nTotal Travel Time: {round(total_time, 1)} minutes")
         print(f"{'='*60}\n")
