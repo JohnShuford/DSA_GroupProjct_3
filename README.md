@@ -59,18 +59,22 @@ We implemented Dijkstra's algorithm using Python's `heapq` module for the priori
 - Travel mode: car only
 - Travel times from Google Maps
 - Base case: no traffic conditions assumed
+- Traffic case: random factor between 1 and 3 applied to Base edge times
+- Traffic & Base: all edges available for travel
 
 **Node Selection:**
 - Selected locations represent key landmarks and famous infrastructure in Warsaw
 - 10 nodes distributed across the city
 
 **Time Precision:**
-- Travel times without decimals
+- Travel times without decimals for base; with decimals for traffic
 - Base case range: 3-14 minutes between connected nodes
 
 ---
 
-## Results (Base Case)
+## Results 
+
+Base Case:
 
 **Shortest Path A→J:**
 - Route: A → B → D → F → J
@@ -82,3 +86,15 @@ We implemented Dijkstra's algorithm using Python's `heapq` module for the priori
   - J: PGE Narodowy Stadium
 - **Total Travel Time: 32 minutes**
 
+Traffic Case:
+
+**Shortest Path A→J:**
+- Route: A → B → D → H → I → J
+- Locations:
+  - A: Warsaw Chopin Airport (start)
+  - B: Sluzewiec Horse Racetrack (13.0 mins)
+  - D: SGH Warsaw School of Economics (20.1 mins)
+  - H: Palace of Culture and Science (10.6 mins)
+  - I: National Museum in Warsaw (7.5 mins)
+  - J: PGE Narodowy Stadium (6.8 mins)
+- **Total Travel Time: 58.2 minutes**
