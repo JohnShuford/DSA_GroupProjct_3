@@ -1,0 +1,46 @@
+# Base Case With Uncertainty           ------------------------------------------------------------------------------------------> We need to add this as a new cell in our Jupyter Notebook, I wasn't successful with it
+
+print("\n BASE CASE WITH UNCERTAINTY ")
+
+nav = WarsawNavigator('data/warsaw_nodes.csv', 'data/warsaw_connections.csv')
+
+nav.graph.apply_uncertainty()
+
+path_uncertain = nav.find_route("A", "J", traffic=False)
+nav.print_route_details("A", "J", traffic=False)
+
+map_uncertain = nav.create_path_map(path_uncertain)
+map_uncertain
+
+
+# Traffic & Uncertainty ------------------------------------------------------------------------------------------> We need to add this as a new cell in our Jupyter Notebook, I wasn't successful with it
+
+print("\n TRAFFIC CASE WITH UNCERTAINTY ")
+
+nav = WarsawNavigator('data/warsaw_nodes.csv', 'data/warsaw_connections.csv')
+
+nav.graph.t_edgeWeight()
+nav.graph.apply_uncertainty()
+
+path_traffic_uncertain = nav.find_route("A", "J", traffic=True)
+nav.print_route_details("A", "J", traffic=True)
+
+map_traffic_uncertain = nav.create_path_map(path_traffic_uncertain)
+map_traffic_uncertain
+
+
+# Traffic w/ Uncertainty & Extreme Events ------------------------------------------------------------------------------------------> We need to add this as a new cell in our Jupyter Notebook, I wasn't successful with it
+
+print("\n TRAFFIC WITH UNCERTAINTY AND EXTREME EVENTS ")
+
+nav = WarsawNavigator('data/warsaw_nodes.csv', 'data/warsaw_connections.csv')
+
+nav.graph.t_edgeWeight()
+nav.graph.apply_uncertainty()
+nav.graph.apply_extreme_events(num_edges=3)
+
+path_extreme = nav.find_route("A", "J", traffic=True)
+nav.print_route_details("A", "J", traffic=True)
+
+map_extreme = nav.create_path_map(path_extreme)
+map_extreme
