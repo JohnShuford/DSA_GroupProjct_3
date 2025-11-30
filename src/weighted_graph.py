@@ -82,7 +82,7 @@ class WeightedGraph(object):
         for (u, v) in chosen:
             base_time = self.extreme_w[(u, v)]
             if random.random() < disruption_prob:
-                 new_time = base_time * delay_factor
+                new_time = base_time * delay_factor
                 print(f"Disruption on edge {u}-{v}: {round(base_time,1)} → {round(new_time,1)} mins")
 
                 self.extreme_w[(u, v)] = new_time
