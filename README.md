@@ -70,6 +70,15 @@ We implemented Dijkstra's algorithm using Python's `heapq` module for the priori
 - Travel times without decimals for base; with decimals for traffic
 - Base case range: 3-14 minutes between connected nodes
 
+## 3. Code-Based Verification — Base and Rush Hour Scenarios
+
+## 4. Discussion and Analysis
+
+### How routes changed
+### Impact of uncertainty
+### Interpretation of results
+### Assumptions and limitations
+
 ---
 
 ## Results 
