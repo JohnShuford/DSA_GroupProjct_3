@@ -72,12 +72,49 @@ We implemented Dijkstra's algorithm using Python's `heapq` module for the priori
 
 ## 3. Code-Based Verification — Base and Rush Hour Scenarios
 
+We used our Python/Jupyter Notebook implementation to verify that the algorithm correctly computes shortest paths under both base and traffic conditions, including uncertainty and extreme events.
+
+### Base Case with Uncertainty
+- Applied ±10% random variation to all edge weights to simulate minor delays or fluctuations (e.g., traffic lights, weather conditions)
+- Run the algorithm from A → J and J → A
+- Results were consistent with expected travel times, with minor deviations due to random variation
+
+### Traffic Case with Uncertainty
+- Introduced a traffic multiplier (1–3×) to simulate rush hour conditions
+- Applied ±10% random variation again
+- Shortest path recalculated considering inflated travel times
+- Verified algorithm correctly updated edge times and produced expected paths
+
+### Traffic Case with Extreme Events
+- Randomly selected three edges per run to simulate extreme disruptions (80% normal, 20% major delay ×10)
+- Observed that extreme events dramatically altered optimal paths in some runs
+- Console logs clearly report which edges were disrupted and the inflated travel times
+
+This process confirms the robustness of our Dijkstra implementation and demonstrates realistic route variation under uncertainty.
+
 ## 4. Discussion and Analysis
 
-### How routes changed
-### Impact of uncertainty
-### Interpretation of results
-### Assumptions and limitations
+### Route Changes
+- Base case vs. traffic: Rush hour and random traffic multipliers caused the shortest path to deviate from the original route (A→B→D→F→J) to longer but faster alternatives (A→B→D→H→I→J)
+- Extreme events produced the largest deviations, sometimes bypassing multiple nodes to avoid severely delayed edges
+
+### Impact of Uncertainty
+- Minor ±10% fluctuations rarely change routes but provide realistic travel-time variability
+- Extreme events (×10 delay on selected edges) highlight the sensitivity of route selection to rare but significant disruptions
+
+### Interpretation of Results
+- The algorithm dynamically adapts to changing conditions, mimicking real GPS behavior
+- Even in a small 10-node network, accounting for uncertainty and extreme events demonstrates how robust navigation planning must handle both predictable and rare disruptions
+
+### Assumptions and Limitations
+- Travel times are based on Google Maps estimates; actual conditions may differ
+- Only car travel is considered; pedestrian or public transit routes are excluded
+- Extreme events are randomly assigned; repeated runs may yield different disrupted edges
+- Network size is small (10 nodes); scalability for larger cities may require optimizations
+
+### Conclusion
+
+Our implementation successfully integrates both typical uncertainty and rare extreme events into route planning. The implemented system demonstrates that Dijkstra’s algorithm, augmented with uncertainty and extreme-event simulation, can effectively model realistic urban navigation scenarios. Minor fluctuations affect travel times slightly, while rare extreme events can dramatically alter route choice. Each simulation run provides a unique result, reflecting the inherent unpredictability of real-world traffic networks.
 
 ---
 
