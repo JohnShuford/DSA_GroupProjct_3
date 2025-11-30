@@ -44,3 +44,23 @@ nav.print_route_details("A", "J", traffic=True)
 
 map_extreme = nav.create_path_map(path_extreme)
 map_extreme
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Base Case with Uncertainty
+navigator.graph.apply_uncertainty()
+path = navigator.find_route("A", "J", traffic=False)
+navigator.print_route_details("A", "J", traffic=False)
+
+
+# Traffic Case with Uncertainty & Traffic Multiplier
+navigator.graph.t_edgeWeight()
+navigator.graph.apply_uncertainty()
+path = navigator.find_route("A", "J", traffic=True)
+navigator.print_route_details("A", "J", traffic=True)
+
+# Traffic Case with Extreme Events
+navigator.graph.t_edgeWeight()
+navigator.graph.apply_uncertainty()
+navigator.graph.apply_extreme_events(num_edges=3)
+
+path = navigator.find_route("A", "J", traffic=True)
+navigator.print_route_details("A", "J", traffic=True)
