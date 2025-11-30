@@ -57,6 +57,43 @@ class WeightedGraph(object):
                 self.tw[(_from, _to)] = new_time
                 self.tw[(_to, _from)] = new_time
         return self.tw
+
+    def apply_uncertainty(self, low_noise=0.9, high_noise=1.1):
+        self.uncertain_w = {}
+
+        for (u, v), base_w in self._adjMat.items():
+            noise_factor = round(random.uniform(low_noise, high_noise), 3)
+            new_w = base_w * noise_factor
+
+            self.uncertain_w[(u, v)] = new_w
+            self.uncertain_w[(v, u)] = new_w
+
+        return self.uncertain_w
+        
+    def apply_extreme_events(self, num_edges=3, disruption_prob=0.2, delay_factor=10):
+        self.extreme_w = dict(self.uncertain_w)
+        undirected_edges = []
+        for (u, v) in self._adjMat.keys():
+            if u < v:
+                undirected_edges.append((u, v))
+        chosen = random.sample(undirected_edges, num_edges)
+
+        print("\n Extreme Event Report ")
+        for (u, v) in chosen:
+            base_time = self.extreme_w[(u, v)]
+            if random.random() < disruption_prob:
+                 new_time = base_time * delay_factor
+                print(f"Disruption on edge {u}-{v}: {round(base_time,1)} → {round(new_time,1)} mins")
+
+                self.extreme_w[(u, v)] = new_time
+                self.extreme_w[(v, u)] = new_time
+            else:
+                print(f"No disruption on edge {u}-{v} (normal conditions)")
+
+        print("\n")
+
+        return self.extreme_w
+
     
     def adjacentVertices(self, n):
         self.validIndex(n)
@@ -77,10 +114,22 @@ class WeightedGraph(object):
             if u == end:
                 break
             for v in self.adjacentVertices(u):
+                #if traffic:                   ------> Replacing this code below to update how weights are selected
+                #    w = self.tw[(u, v)]       ------> For traffic, we should use traffic-inflated weights, uncertainty, and extreme events
+                #else:                         ------> Base case may still include uncertainty
+                #    w = self.edgeWeight(u, v) ------> Instead of modifying t_edgeWeight, I added a separate uncertainty layer below it
                 if traffic:
-                    w = self.tw[(u, v)]
+                    if hasattr(self, "extreme_w"):
+                        w = self.extreme_w[(u, v)]
+                    elif hasattr(self, "uncertain_w"):
+                        w = self.uncertain_w[(u, v)]
+                    else:
+                        w = self.tw[(u, v)]
                 else:
-                    w = self.edgeWeight(u, v)
+                    if hasattr(self, "uncertain_w"):
+                        w = self.uncertain_w[(u, v)]
+                    else:
+                        w = self.edgeWeight(u, v)
                 nd = d + w
                 if nd < dist[v]:
                     dist[v] = nd
