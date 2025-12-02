@@ -148,3 +148,10 @@ Traffic Case:
   - I: National Museum in Warsaw (7.5 mins)
   - J: PGE Narodowy Stadium (6.8 mins)
 - **Total Travel Time: 58.2 minutes**
+
+
+
+---
+
+Few Vizualizations:
+<img width="1022" height="613" alt="image" src="https://github.com/user-attachments/assets/247710ee-3cba-4d9d-b6e4-c7aa790bace8" />
