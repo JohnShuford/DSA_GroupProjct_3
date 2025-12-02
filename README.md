@@ -1,4 +1,4 @@
- ### Warsaw Route Optimization using Dijkstra's Algorithm
+### Warsaw Route Optimization using Dijkstra's Algorithm
 
 ## 1. Description of Our Approach
 
@@ -70,6 +70,8 @@ We implemented Dijkstra's algorithm using Python's `heapq` module for the priori
 - Travel times without decimals for base; with decimals for traffic
 - Base case range: 3-14 minutes between connected nodes
 
+---
+
 ## 3. Code-Based Verification — Base and Rush Hour Scenarios
 
 We used our Python/Jupyter Notebook implementation to verify that the algorithm correctly computes shortest paths under both base and traffic conditions, including uncertainty and extreme events.
@@ -91,6 +93,8 @@ We used our Python/Jupyter Notebook implementation to verify that the algorithm 
 - Console logs clearly report which edges were disrupted and the inflated travel times
 
 This process confirms the robustness of our Dijkstra implementation and demonstrates realistic route variation under uncertainty.
+
+---
 
 ## 4. Discussion and Analysis
 
