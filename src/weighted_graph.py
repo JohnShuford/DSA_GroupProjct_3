@@ -15,7 +15,7 @@ class WeightedGraph(object):
         return len(self._adjMat) // 2
 
     def addVertex(self, vertex):
-        self._vertices.append(vertex) #this one
+        self._vertices.append(vertex) 
 
     def validIndex(self, n):
         if n < 0 or self.nVertices() <= n:
@@ -26,7 +26,7 @@ class WeightedGraph(object):
         if self.validIndex(n):
             return self._vertices[n]
 
-    def addEdge(self, A, B, w): #this one
+    def addEdge(self, A, B, w): 
         self.validIndex(A)
         self.validIndex(B)
         if A == B:
@@ -35,7 +35,7 @@ class WeightedGraph(object):
         self._adjMat[B, A] = w
 
     def hasEdge(self, A, B):
-        return ((A, B) in self._adjMat and  #this one
+        return ((A, B) in self._adjMat and  
                 self._adjMat[A, B] < math.inf)
 
     def edgeWeight(self, A, B):
