@@ -154,4 +154,8 @@ Traffic Case:
 ---
 
 Few Vizualizations:
+**Base Case**
+<img width="1019" height="614" alt="image" src="https://github.com/user-attachments/assets/a4e041b1-6ab0-4674-bf9b-41ef39bc0081" />
+
+**Traffic Case**
 <img width="1022" height="613" alt="image" src="https://github.com/user-attachments/assets/247710ee-3cba-4d9d-b6e4-c7aa790bace8" />
