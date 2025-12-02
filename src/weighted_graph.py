@@ -114,10 +114,6 @@ class WeightedGraph(object):
             if u == end:
                 break
             for v in self.adjacentVertices(u):
-                #if traffic:                   ------> Replacing this code below to update how weights are selected
-                #    w = self.tw[(u, v)]       ------> For traffic, we should use traffic-inflated weights, uncertainty, and extreme events
-                #else:                         ------> Base case may still include uncertainty
-                #    w = self.edgeWeight(u, v) ------> Instead of modifying t_edgeWeight, I added a separate uncertainty layer below it
                 if traffic:
                     if hasattr(self, "extreme_w"):
                         w = self.extreme_w[(u, v)]
