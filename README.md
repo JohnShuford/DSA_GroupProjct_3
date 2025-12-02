@@ -59,7 +59,7 @@ We implemented Dijkstra's algorithm using Python's `heapq` module for the priori
 - Travel mode: car only
 - Travel times from Google Maps
 - Base case: no traffic conditions assumed
-- Traffic case: random factor between 1 and 3 applied to Base edge times; traffic factors change each time code is executed
+- Traffic case: random factor between 1 and 3 applied to Base edge times; traffic factors change each time t_edgeWeight() is executed
 - Traffic & Base: all edges available for travel
 
 **Node Selection:**
